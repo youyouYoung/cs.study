@@ -17,3 +17,4 @@ About four years ago, I'm starting learning computer science. but now I'm still 
 	2. add(T t)  
 	3. remove(T t)  
 * use linux command **tree** to make a folder tree for this repository.  
+* update the LinkedList class. add a variable to point the last node of this list.
