@@ -1,9 +1,14 @@
+/**
+ * this class use to make a custom linked list, and it support genericity.
+ * 		2016-11-13 add a member to point the end of this list.
+ * */
 package datastructures.list;
 
 public class LinkedList<T>
 {
 	private int listLength;			//variable to store the number of elements in the list
-	private ListNode<T> rootNode;	//pointer to the first node of the list
+	private ListNode<T> rootNode;	//pointer to the start of this list
+	private ListNode<T> tail;		//pointer to the end of this list
 	
 	/**
 	 * default constructor
@@ -13,6 +18,7 @@ public class LinkedList<T>
 	{
 		this.listLength = 0;
 		this.rootNode = null;
+		this.tail = null;
 	}
 	
 	/**
@@ -21,7 +27,9 @@ public class LinkedList<T>
 	 * */
 	public LinkedList(LinkedList<? extends T> otherList)
 	{
-		this.listLength = 0;
+		this.listLength = otherList.listLength;
+		this.rootNode = null;
+		this.tail = null;
 		copy(otherList);
 	}
 	
@@ -48,18 +56,25 @@ public class LinkedList<T>
 	{
 		ListNode<T> node = new ListNode<T>(t);
 		
-		if (rootNode == null)
+		if (tail == null)
 		{
 			rootNode = node;
+			tail = node;
 		}
 		else
 		{
-			ListNode<T> currentNode = rootNode;
-			while (currentNode.getNextNode() != null)
-			{
-				currentNode = currentNode.getNextNode();
-			}
-			currentNode.setNextNode(node);
+			tail.setNextNode(node);		//add new node to the tail of this list.
+			tail = node;
+			/**
+			 * after i add a member to point the end of this list.
+			 * the code under this annotation is not use any more.
+			 * */
+//			ListNode<T> currentNode = rootNode;
+//			while (currentNode.getNextNode() != null)
+//			{
+//				currentNode = currentNode.getNextNode();
+//			}
+//			currentNode.setNextNode(node);
 		}
 		this.listLength++;
 	}
@@ -74,6 +89,15 @@ public class LinkedList<T>
 		node.setNextNode(rootNode);
 		this.rootNode = node;
 		this.listLength++;
+	}
+	
+	/**
+	 * Method to append all of the element in the specified otherList into the end of this list.
+	 * */
+	public void addAll(LinkedList<? extends T> otherList)
+	{
+		copy(otherList);
+		this.listLength += otherList.listLength;
 	}
 	
 	/**
@@ -95,13 +119,14 @@ public class LinkedList<T>
 	}
 	
 	/**
-	 * Method to get the position of a element.
+	 * Method to get the index of the first occurrence of the specified element in this list.
+	 * or -1 if this list does not contain the element.
 	 * */
 	public int indexOf(T t)
 	{
 		ListNode<T> currentNode = this.rootNode;
-		int resultIndex = -1;
-		int currentIndex = 0;
+		int resultIndex = -1;	//the index of the specified element t.
+		int currentIndex = 0;	//the index of the currentNode in this list.
 		
 		while (currentNode != null && resultIndex == -1)
 		{
@@ -112,18 +137,19 @@ public class LinkedList<T>
 			
 			currentNode = currentNode.getNextNode();
 			currentIndex++;
-		}
+		}//end loop this list.
 		
 		return resultIndex;
 	}
 	
 	/**
-	 * Method to search the list is contain this element.
+	 * Method to search the list is contain the specified element t.
+	 * it will return true if the list contain this specified element.
 	 * */
 	public boolean contains(T t)
 	{
 		ListNode<T> currentNode = this.rootNode;
-		boolean isFound = false;
+		boolean isFound = false;	
 		
 		while (currentNode != null && !isFound)
 		{
@@ -136,6 +162,7 @@ public class LinkedList<T>
 	
 	/**
 	 * Method to remove the element at the specified position in this list.
+	 * it will return the element in the list of this specified index.
 	 * */
 	public T remove(int index)
 	{
@@ -144,21 +171,21 @@ public class LinkedList<T>
 			throw new IndexOutOfBoundsException("Error: Index out of Bounds. [index="+index+"]");
 		}
 		
-		ListNode<T> prevNode = null;
+		ListNode<T> previousNode = null;		//the previous of the currentNode.
 		ListNode<T> currentNode = rootNode;		//as long as listLength != 0, the rootNode will nerver be null;
 		for (int i = 0; i < index; i++)
 		{
-			prevNode = currentNode;
+			previousNode = currentNode;
 			currentNode = currentNode.getNextNode();
 		}
 		
-		if (prevNode == null)
+		if (previousNode == null)	//if the index == 0
 		{
 			rootNode = rootNode.getNextNode();
 		}
 		else
 		{
-			prevNode.setNextNode(currentNode.getNextNode());
+			previousNode.setNextNode(currentNode.getNextNode());
 		}
 		listLength--;
 		return currentNode.getElement();
@@ -166,6 +193,7 @@ public class LinkedList<T>
 	
 	/**
 	 * Method to remove the first occurrence of the specified element from this list.
+	 * it will return false if the element t is not contained in this list.
 	 * */
 	public boolean remove(T t)
 	{
@@ -182,6 +210,7 @@ public class LinkedList<T>
 	
 	/**
 	 * Method to replaces the element at the specified position in the list with a specified element.
+	 * it will return the origin value of the specified index in the list.
 	 * */
 	public T set(int index, T newElement)
 	{
@@ -202,6 +231,9 @@ public class LinkedList<T>
 		return originElement;
 	}
 	
+	/**
+	 * Method to copy the specified otherList to this list.
+	 * */
 	private void copy(LinkedList<? extends T> otherList)
 	{
 		if (otherList.size() == 0)
@@ -210,36 +242,40 @@ public class LinkedList<T>
 		}
 		
 		/**
-		 * STEP1: make a new rootNode to the otherList.
+		 * STEP1: copy the otherList to a new LinkedList.
+		 * 		and obtain the head of the new LinkedList.
 		 * 
-		 * STEP2: link the new rootNode to the end of this list.
+		 * STEP2: link the new LinkedList's head to the end of current list.
 		 * 
 		 * STEP3: add the length of the otherList to the listLength.
+		 * 		Attention:
+		 * 			2016-11-13 the step3 should not be this method's business. so i drop it.
 		 * */
 		//STEP1
-		ListNode<T> firstNewNode = null;
-		ListNode<T> prevNode = null;
-		ListNode<? extends T> currentNode_other = otherList.rootNode;
-		for (int i = 0; i < otherList.listLength; i++)
+		ListNode<T> head_newList = null;	//the start of the new list.
+		ListNode<T> tail_newList = null;	//the end of the new list.
+		ListNode<? extends T> currentNode_other = otherList.rootNode;	//the current node of the other list.
+		
+		while (currentNode_other != null)	//after 
 		{
-			ListNode<T> newNode = new ListNode<T>(currentNode_other.getElement());
-			currentNode_other = currentNode_other.getNextNode();
-			if (prevNode == null)
+			ListNode<T> node = new ListNode<T>(currentNode_other.getElement());
+			if (tail_newList == null)
 			{
-				firstNewNode = newNode;
-				prevNode = firstNewNode;
+				head_newList = node;
+				tail_newList = node;
 			}
 			else
 			{
-				prevNode.setNextNode(newNode);
-				prevNode = prevNode.getNextNode();
+				tail_newList.setNextNode(node);
+				tail_newList = tail_newList.getNextNode();
 			}
-		} //end for
+			currentNode_other = currentNode_other.getNextNode();
+		}//end loop the otherList
 		
 		//STEP2
 		if (this.rootNode == null)
 		{
-			rootNode = firstNewNode;
+			rootNode = head_newList;
 		}
 		else
 		{
@@ -248,10 +284,10 @@ public class LinkedList<T>
 			{
 				currentNode = currentNode.getNextNode();
 			}
-			currentNode.setNextNode(firstNewNode);
+			currentNode.setNextNode(head_newList);
 		}
 		
-		//STEP3
-		this.listLength += otherList.listLength;
+//		//STEP3
+//		this.listLength += otherList.listLength;
 	}
 }
