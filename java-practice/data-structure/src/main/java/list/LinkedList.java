@@ -2,7 +2,7 @@
  * this class use to make a custom linked list, and it support genericity.
  * 		2016-11-13 add a member to point the end of this list.
  * */
-package datastructures.list;
+package list;
 
 public class LinkedList<T>
 {

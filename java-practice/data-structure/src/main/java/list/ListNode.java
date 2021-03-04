@@ -1,4 +1,4 @@
-package datastructures.list;
+package list;
 
 class ListNode<T>
 {
