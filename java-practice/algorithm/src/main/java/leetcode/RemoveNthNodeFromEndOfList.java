@@ -17,7 +17,7 @@ public class RemoveNthNodeFromEndOfList {
         outputListNode(solution.removeNthFromEnd(head2, 1));
     }
 
-    private static void outputListNode(ListNode head) {
+    public static void outputListNode(ListNode head) {
         StringBuilder result = new StringBuilder();
         while (head != null) {
             result.append(head.val);
@@ -77,7 +77,7 @@ public class RemoveNthNodeFromEndOfList {
         }
     }
 
-    private static class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
