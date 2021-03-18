@@ -22,6 +22,29 @@ public class ValidParentheses {
     }
 
     private static class Solution {
+        /**
+         * Description: determine if the input string is valid.
+         *
+         * An input string is valid if:
+         *  1. Open brackets must be closed by the same type of brackets.
+         *  2. Open brackets must be closed in the correct order.
+         *
+         *
+         * First, Splitting the brackets to two groups, which are open brackets and close brackets.
+         *
+         * Then, using a stack to hold every char in the string.
+         * if the current char is a open bracket, push it into the stack.
+         * if the current char is a close bracket, pop the top char of the stack and then test if
+         * the current char is a pair with the top char.
+         *
+         * if they are a pair, continue to the next char of the string. if not,
+         * return false.
+         *
+         * @param s the input string
+         * @return is the string valid
+         * @author youyou
+         * @date 3/18/21 10:10 AM
+         */
         public boolean isValid(String s) {
             if (s == null || s.length() % 2 != 0) return false;
             Map<Character, Character> map = new HashMap<Character, Character>(9){{
