@@ -4,3 +4,10 @@ TODO.md*
 *.iml
 .idea/
 target/
+
+## jekyll
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
