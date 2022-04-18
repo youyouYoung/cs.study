@@ -2,7 +2,7 @@ TODO.md*
 *.class
 *.bak
 *.iml
-.idea/
+../.idea/
 target/
 
 ## jekyll
