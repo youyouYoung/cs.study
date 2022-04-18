@@ -1,3 +1,11 @@
+TODO.md*
+*.class
+*.bak
+*.iml
+../.idea/
+target/
+
+## jekyll
 _site
 .sass-cache
 .jekyll-cache
