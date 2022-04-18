@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/java-practice/algorithm/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java-practice/data-structure/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java-practice/elastic-job/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java-practice/fork-join/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java-practice/rocketmq/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java-practice/thread-pool/src/main/java" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
