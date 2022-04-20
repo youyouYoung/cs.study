@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="elastic-job" />
+        <module name="rocketmq" />
+        <module name="data-structure" />
+        <module name="thread-pool" />
+        <module name="fork-join" />
+        <module name="algorithm" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="algorithm" target="1.8" />
+      <module name="cs.study" target="8" />
+      <module name="data-structure" target="1.8" />
+      <module name="elastic-job" target="1.8" />
+      <module name="fork-join" target="1.8" />
+      <module name="java-practice" target="1.8" />
+      <module name="rocketmq" target="1.8" />
+      <module name="thread-pool" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

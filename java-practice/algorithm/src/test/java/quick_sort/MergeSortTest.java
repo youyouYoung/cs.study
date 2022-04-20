@@ -1,7 +1,6 @@
 package quick_sort;
 
 import sorting.merge_sort.MergeSortDriver;
-import sorting.quick_sort.QuickSortDriver;
 
 import java.util.Arrays;
 
