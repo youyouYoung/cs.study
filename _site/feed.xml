@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/cs.study/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/cs.study/" rel="alternate" type="text/html" /><updated>2021-10-27T16:54:55+08:00</updated><id>http://localhost:4000/cs.study/feed.xml</id><title type="html">Computer science study</title><subtitle>This repository uses to record my learning process about computer science. It is used to record my idea about how to resolve Leetcode problems.</subtitle><author><name>youyouYoung</name><email>youyou.young.mine@gmail.com</email></author><entry><title type="html">LeetCode - Substring with Concatenation of All Words</title><link href="http://localhost:4000/cs.study/leetcode/2021/10/25/substring-with-concatenation-of-all-words.html" rel="alternate" type="text/html" title="LeetCode - Substring with Concatenation of All Words" /><published>2021-10-25T16:40:41+08:00</published><updated>2021-10-25T16:40:41+08:00</updated><id>http://localhost:4000/cs.study/leetcode/2021/10/25/substring-with-concatenation-of-all-words</id><content type="html" xml:base="http://localhost:4000/cs.study/leetcode/2021/10/25/substring-with-concatenation-of-all-words.html">&lt;p&gt;这篇文章是用来记录&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LeetCode&lt;/code&gt;30题: &lt;a href=&quot;https://leetcode.com/problems/substring-with-concatenation-of-all-words/&quot;&gt;Substring with Concatenation of All Words&lt;/a&gt;的解题过程.&lt;/p&gt;
+
+&lt;h2 id=&quot;问题&quot;&gt;问题&lt;/h2&gt;
+&lt;p&gt;You are given a string &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt; and an array of strings &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt; of &lt;strong&gt;the same length&lt;/strong&gt;. Return all starting indices of substring(s) in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt; that is a concatenation of each word in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt; &lt;strong&gt;exactly once&lt;/strong&gt;, &lt;strong&gt;in any order&lt;/strong&gt;, and &lt;strong&gt;without any intervening characters&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can return the answer in &lt;strong&gt;any order.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;测试用例&quot;&gt;测试用例&lt;/h2&gt;
+&lt;h3 id=&quot;用例1&quot;&gt;用例1&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Input: s = “barfoothefoobarman”, words = [“foo”,”bar”] &lt;br /&gt;
+Output: [0,9] &lt;br /&gt;
+Explanation: Substrings starting at index 0 and 9 are “barfoo” and “foobar” respectively. &lt;br /&gt;
+The output order does not matter, returning [9,0] is fine too.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;用例2&quot;&gt;用例2&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Input: s = “wordgoodgoodgoodbestword”, words = [“word”,”good”,”best”,”word”]  &lt;br /&gt;
+Output: []&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;用例3&quot;&gt;用例3&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Input: s = “barfoofoobarthefoobarman”, words = [“bar”,”foo”,”the”]  &lt;br /&gt;
+Output: [6,9,12]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;思路&quot;&gt;思路&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;获取&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中任一元素的长度&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;设置字符串&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;的索引&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index=0&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;判断长度为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l&lt;/code&gt;的子串(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[index, index+l)&lt;/code&gt;)是否在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中.&lt;/li&gt;
+  &lt;li&gt;如果不在, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;向后移动一位, 重复执行第3步.&lt;/li&gt;
+  &lt;li&gt;如果在, 判断&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;中接下来长度为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l*(words.length()-1)&lt;/code&gt;的子串(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[index, index+l*(words.length()-1))&lt;/code&gt;)是否是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;的剩余字符串的连接的结果.&lt;/li&gt;
+  &lt;li&gt;如果不是, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;向后移动一位, 重复执行第3步.&lt;/li&gt;
+  &lt;li&gt;如果是, 那么&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;就是其中的一个答案.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;补充:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;的截止位置:
+    &lt;ul&gt;
+      &lt;li&gt;要确保&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[index, s.length()) &amp;gt;= l*words.length()&lt;/code&gt;才有可能在字符串&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;为开头的子串中找到答案.&lt;/li&gt;
+      &lt;li&gt;所以截止位置为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s.length() - l*words.length()&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;确保&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中的每一个元素只在子串中匹配道一次:
+    &lt;ul&gt;
+      &lt;li&gt;每次判断到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;的子串在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中后, 总&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中移除这个元素.&lt;/li&gt;
+      &lt;li&gt;因为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;每后移一位, 就需要重新判断. &lt;strong&gt;所以每个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;必须有自己对应的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;数组.&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;第&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt;步的实现方式:
+    &lt;ul&gt;
+      &lt;li&gt;将&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;的子串按照长度&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l&lt;/code&gt;切割, 判断每一个切割后的子串是否在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中.&lt;/li&gt;
+      &lt;li&gt;如果有不存在的, 则不符合要求.&lt;/li&gt;
+      &lt;li&gt;如果全部存在, 则符合要求.&lt;/li&gt;
+      &lt;li&gt;注意: &lt;strong&gt;每匹配都一个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中的元素, 都要从&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;words&lt;/code&gt;中将该元素移除&lt;/strong&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;实现&quot;&gt;实现&lt;/h2&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * Description: 获取字符串`s`中由`words`中所有元素组成的子字符串的起始位置.
+     *
+     * @param s 原始字符串
+     * @param words words数组
+     * @return 子字符串的起始索引位置
+     * @author youyou
+     * @date 10/25/21 6:08 PM
+     */&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findSubstring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// index遍历的截止位置&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 为了方便判断子串是否在`words`中, 将`words`格式化为hashmap.&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 其中key: words中的每一个元素. value: 这个元素在`words`中的个数.&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;containsKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startingIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;containsKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// removing substring from subMap&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subMap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;removeWord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isSubstring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;startingIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startingIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * Description: 第`5`步的实现 - 判断`s`中接下来长度为`l*(words.length()-1)`的子串(`[index, index+l*(words.length()-1))`)
+     * 是否是`words`的剩余字符串的连接的结果.
+     *
+     * @param s `s`的子字符串
+     * @param wordsMap `words`组成的map
+     * @param wordLength `words`中每个元素的长度
+     * @return 如果字符串`s`是`words`中所有元素的组合, 返回`true`. 否则返回`false`
+     * @author youyou
+     * @date 10/25/21 6:05 PM
+     */&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isSubstring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordLength&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 当且仅当`wordsMap`和`s`都为空时, 才停止循环&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordLength&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;containsKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;removeWord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wordLength&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// 通过判断`wordsMap`中是否还有元素去判断`s`与`words`是否完全匹配.&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * Description: 从`words`中移除匹配过的字符串
+     *
+     * @param word 匹配过的字符串
+     * @param wordsMap `words`所在的map
+     * @author youyou
+     * @date 10/25/21 6:04 PM
+     */&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;removeWord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 如果word在`wordsMap`中出现多次, 则次数-1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wordsMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>youyouYoung</name><email>youyou.young.mine@gmail.com</email></author><category term="leetcode" /><summary type="html">这篇文章是用来记录LeetCode30题: Substring with Concatenation of All Words的解题过程.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/cs.study/jekyll/update/2021/10/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2021-10-20T14:47:54+08:00</published><updated>2021-10-20T14:47:54+08:00</updated><id>http://localhost:4000/cs.study/jekyll/update/2021/10/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/cs.study/jekyll/update/2021/10/20/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>youyouYoung</name><email>youyou.young.mine@gmail.com</email></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
