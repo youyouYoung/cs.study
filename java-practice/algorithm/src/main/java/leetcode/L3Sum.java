@@ -46,10 +46,10 @@ public class L3Sum {
             List<Set<Integer>> filterList = new ArrayList<>();
             Map<Integer, List<List<Integer>>> restNumMap = new HashMap<>(nums.length << 2);
             for (int i = 0; i < nums.length; i++) {
-                int x = nums[i];
+                final int x = nums[i];
 
                 for (int j = i + 1; j < nums.length; j++) {
-                    int y = nums[j];
+                    final int y = nums[j];
 
                     if (restNumMap.containsKey(y)) {
                         List<List<Integer>> restNum = restNumMap.get(y);
@@ -62,7 +62,7 @@ public class L3Sum {
                             add(y);
                         }};
 
-                        List<List<Integer>> restNum = restNumMap.containsKey(z) ? restNumMap.get(z) : new ArrayList<>();
+                        List<List<Integer>> restNum = restNumMap.containsKey(z) ? restNumMap.get(z) : new ArrayList<List<Integer>>();
                         if (!restNum.contains(list)) {
                             restNum.add(list);
                         }
