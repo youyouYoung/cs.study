@@ -55,8 +55,8 @@ public class Test34_TheFirstAndLastPositionOfElement {
          *    3.1 update the end index of nums as middle - 1
          *    3.2 continue loop
          * 4. if nums[middleIndex] == target, end loop and set two pointers: left, right.
-         *    4.1 make the left move forward until nums[middleIndex] != target or less than 0.
-         *    4.2 make the right move backward until nums[middleIndex] != target or bigger than nums.length() - 1.
+         *    4.1 make the left move forward until nums[left] != target or less than 0.
+         *    4.2 make the right move backward until nums[right] != target or bigger than nums.length() - 1.
          *    4.3 then the result is [left + 1, right - 1]
          * */
         private void way2(int[] result, int[] nums, int target) {
