@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Description: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+ * Description: <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">...</a>
  *
  * @author youyou
  * @date 2/15/22 2:18 PM
@@ -14,10 +14,9 @@ public class LongestSubstring_test3 {
         Solution solution = new Solution();
         solution.lengthOfLongestSubstring("abcabcbb");
     }
-}
 
-class Solution {
-    public int lengthOfLongestSubstring(String s) {
+    private static class Solution {
+        public int lengthOfLongestSubstring(String s) {
 //         if (s == null || "".equals(s))
 //             return 0;
 
@@ -44,23 +43,26 @@ class Solution {
 
 //         return max;
 
-        if (s == null || "".equals(s)) return 0;
+            if (s == null || "".equals(s)) return 0;
 
-        int max = 0;
-        int l = s.length();
-        Map<Character, Integer> map = new HashMap<>(26 * 2 << 2);
+            int max = 0;
+            int l = s.length();
+            Map<Character, Integer> map = new HashMap<>(26 * 2 << 2);
 
-        for (int b = -1, e = 0; e < l; e++) {
-            char c = s.charAt(e);
-            if (map.containsKey(c)) {
-                b = Math.max(map.get(c), b); // 因为没有清除不在这个窗口内的字符位置. 所以b != map.get(array[e]) + 1
+            for (int b = -1, e = 0; e < l; e++) {
+                char c = s.charAt(e);
+                if (map.containsKey(c)) {
+                    b = Math.max(map.get(c), b); // 因为没有清除不在这个窗口内的字符位置. 所以b != map.get(array[e]) + 1
+                }
+
+                int length = e - b;
+                max = Math.max(max, length);
+                map.put(c, e);
             }
 
-            int length = e - b;
-            max = Math.max(max, length);
-            map.put(c, e);
+            return max;
         }
-
-        return max;
     }
 }
+
+
