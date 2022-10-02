@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * 功能描述: https://leetcode.com/problems/container-with-most-water/
+ * 功能描述: <a href="https://leetcode.com/problems/container-with-most-water/">...</a>
  *
  * @author youyou
  * @date 3/4/21 2:59 PM
  */
-public class ContainerWithMostWater_test11 {
+public class Test11_ContainerWithMostWater {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

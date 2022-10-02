@@ -3,12 +3,12 @@ package leetcode;
 import java.util.*;
 
 /**
- * Description: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+ * Description: <a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/">...</a>
  *
  * @author youyou
  * @date 3/11/21 1:33 PM
  */
-public class LetterCombinationsOfaPhoneNumber {
+public class Test17_LetterCombinationsOfaPhoneNumber {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

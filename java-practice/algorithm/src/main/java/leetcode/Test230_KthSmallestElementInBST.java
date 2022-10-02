@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Description: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+ * Description: <a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/">...</a>
  * date 18/04/2022 17:10
  *
  * @author yangguang
  */
-public class KthSmallestElementInBST_test2309 {
+public class Test230_KthSmallestElementInBST {
     private class Solution {
         public int kthSmallest(TreeNode root, int k) {
             List<TreeNode> sortedTreeNode = new ArrayList<>();

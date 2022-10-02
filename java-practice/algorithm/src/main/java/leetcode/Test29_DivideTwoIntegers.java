@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * Description: https://leetcode.com/problems/divide-two-integers/
+ * Description: <a href="https://leetcode.com/problems/divide-two-integers/">...</a>
  *
  * @author youyou
  * @date 3/19/21 2:15 PM
  */
-public class DivideTwoIntegers {
+public class Test29_DivideTwoIntegers {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

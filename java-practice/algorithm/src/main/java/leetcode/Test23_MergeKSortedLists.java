@@ -1,18 +1,18 @@
 package leetcode;
 
-import leetcode.RemoveNthNodeFromEndOfList.ListNode;
+import leetcode.Test19_RemoveNthNodeFromEndOfList.ListNode;
 
 /**
- * Description: https://leetcode.com/problems/merge-k-sorted-lists/
+ * Description: <a href="https://leetcode.com/problems/merge-k-sorted-lists/">...</a>
  *
  * @author youyou
  * @date 3/18/21 4:36 PM
  */
-public class MergeKSortedLists {
+public class Test23_MergeKSortedLists {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        RemoveNthNodeFromEndOfList.outputListNode(solution.mergeKLists(new ListNode[]{
+        Test19_RemoveNthNodeFromEndOfList.outputListNode(solution.mergeKLists(new ListNode[]{
                 new ListNode(1, new ListNode(4, new ListNode(5))),
                 new ListNode(1, new ListNode(3, new ListNode(4))),
                 new ListNode(2, new ListNode(6))

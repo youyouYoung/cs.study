@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * 功能描述: https://leetcode.com/problems/longest-palindromic-substring/
+ * 功能描述: <a href="https://leetcode.com/problems/longest-palindromic-substring/">...</a>
  *
  * @author youyou
  * @date 3/9/20 9:44 PM
  */
-public class LongestPalindrome_test5 {
+public class Test5_LongestPalindrome {
 
     public static void main(String[] args) {
         // System.out.println(new Solution().longestPalindrome("aa"));

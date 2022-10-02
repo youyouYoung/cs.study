@@ -2,7 +2,13 @@ package leetcode;
 
 import java.util.Arrays;
 
-public class TheFirstAndLastPositionOfElement_test34 {
+/**
+ * Description: <a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/">...</a>
+ *
+ * @author youyou
+ * @date 10/1/22 2:02 PM
+ */
+public class Test34_TheFirstAndLastPositionOfElement {
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] nums = new int[] {1, 2};

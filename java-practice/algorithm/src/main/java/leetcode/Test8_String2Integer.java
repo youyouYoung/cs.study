@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * 功能描述: https://leetcode.com/problems/string-to-integer-atoi/
+ * 功能描述: <a href="https://leetcode.com/problems/string-to-integer-atoi/">...</a>
  *
  * @author youyou
  * @date 3/16/20 10:59 PM
  */
-public class String2Integer_test8 {
+public class Test8_String2Integer {
     public static void main(String[] args) {
         System.out.println(Integer.MAX_VALUE / 10);
         System.out.println(Integer.MIN_VALUE / 10);

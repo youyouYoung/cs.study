@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Description: https://leetcode.com/problems/4sum/
+ * Description: <a href="https://leetcode.com/problems/4sum/">...</a>
  *
  * @author youyou
  * @date 3/11/21 2:56 PM
  */
-public class L4Sum {
+public class Test18_L4Sum {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

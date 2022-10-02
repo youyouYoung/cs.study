@@ -1,6 +1,12 @@
 package leetcode;
 
-public class SearchInRotatedSortedArray_test33 {
+/**
+ * Description: <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/">...</a>
+ *
+ * @author youyou
+ * @date 9/30/22 4:02 PM
+ */
+public class Test33_SearchInRotatedSortedArray {
     public static void main(String[] args) {
         int[] nums = new int[] {1, 3};
         Solution solution = new Solution();

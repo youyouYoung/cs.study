@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * 功能描述: https://leetcode.com/problems/palindrome-number/
+ * 功能描述: <a href="https://leetcode.com/problems/palindrome-number/">...</a>
  *
  * @author youyou
  * @date 3/18/20 9:55 PM
  */
-public class PalindromeNumber_test9 {
+public class Test9_PalindromeNumber {
     public static void main(String[] args) {
         Solution solution = new Solution();
 

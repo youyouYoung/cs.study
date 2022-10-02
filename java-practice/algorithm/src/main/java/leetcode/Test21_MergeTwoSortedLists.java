@@ -1,28 +1,28 @@
 package leetcode;
 
-import leetcode.RemoveNthNodeFromEndOfList.ListNode;
+import leetcode.Test19_RemoveNthNodeFromEndOfList.ListNode;
 
 /**
- * Description: https://leetcode.com/problems/merge-two-sorted-lists/
+ * Description: <a href="https://leetcode.com/problems/merge-two-sorted-lists/">...</a>
  *
  * @author youyou
  * @date 3/18/21 10:43 AM
  */
-public class MergeTwoSortedLists {
+public class Test21_MergeTwoSortedLists {
 
     public static void main(String[] args) {
 
         Solution solution = new Solution();
-        RemoveNthNodeFromEndOfList.outputListNode(solution.mergeTwoLists(
+        Test19_RemoveNthNodeFromEndOfList.outputListNode(solution.mergeTwoLists(
                 new ListNode(1, new ListNode(2, new ListNode(4))),
                 new ListNode(1, new ListNode(3, new ListNode(4)))
         ));
 
-        RemoveNthNodeFromEndOfList.outputListNode(solution.mergeTwoLists(
+        Test19_RemoveNthNodeFromEndOfList.outputListNode(solution.mergeTwoLists(
                 null, null
         ));
 
-        RemoveNthNodeFromEndOfList.outputListNode(solution.mergeTwoLists(
+        Test19_RemoveNthNodeFromEndOfList.outputListNode(solution.mergeTwoLists(
                 null, new ListNode(0)
         ));
     }

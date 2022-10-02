@@ -3,12 +3,12 @@ package leetcode;
 import java.util.Arrays;
 
 /**
- * Description: https://leetcode.com/problems/remove-element/
+ * Description: <a href="https://leetcode.com/problems/remove-element/">...</a>
  *
  * @author youyou
  * @date 3/19/21 10:26 AM
  */
-public class RemoveElement {
+public class Test27_RemoveElement {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

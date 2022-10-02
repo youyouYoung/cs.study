@@ -3,12 +3,12 @@ package leetcode;
 import java.util.*;
 
 /**
- * Description: https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+ * Description: <a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words/">...</a>
  *
  * @author youyou
  * @date 10/25/21 3:19 PM
  */
-public class SubstringwithConcatenationofAllWords {
+public class Test30_SubstringWithConcatenationOfAllWords {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

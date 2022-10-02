@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * Description: https://leetcode.com/problems/longest-common-prefix/
+ * Description: <a href="https://leetcode.com/problems/longest-common-prefix/">...</a>
  *
  * @author youyou
  * @date 3/4/21 8:44 PM
  */
-public class LongestCommonPrefix {
+public class Test14_LongestCommonPrefix {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

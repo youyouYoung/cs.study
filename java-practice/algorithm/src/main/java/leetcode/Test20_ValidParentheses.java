@@ -5,12 +5,12 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * Description: https://leetcode.com/problems/valid-parentheses/
+ * Description: <a href="https://leetcode.com/problems/valid-parentheses/">...</a>
  *
  * @author youyou
  * @date 3/12/21 4:13 PM
  */
-public class ValidParentheses {
+public class Test20_ValidParentheses {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * 功能描述: https://leetcode.com/problems/intersection-of-two-linked-lists/
+ * 功能描述: <a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">...</a>
  *
  * @author youyou
  * @date 4/30/20 6:31 PM
  */
-public class IntersectionOfTwoLists_test160 {
+public class Test160_IntersectionOfTwoLists {
 
     private class Solution {
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {

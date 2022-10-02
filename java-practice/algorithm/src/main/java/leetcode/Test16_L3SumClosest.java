@@ -3,12 +3,12 @@ package leetcode;
 import java.util.Arrays;
 
 /**
- * Description: https://leetcode.com/problems/3sum-closest/
+ * Description: <a href="https://leetcode.com/problems/3sum-closest/">...</a>
  *
  * @author youyou
  * @date 3/6/21 5:58 PM
  */
-public class L3SumClosest {
+public class Test16_L3SumClosest {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

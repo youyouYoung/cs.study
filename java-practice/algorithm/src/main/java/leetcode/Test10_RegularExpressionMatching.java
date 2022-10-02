@@ -3,12 +3,12 @@ package leetcode;
 import java.util.Objects;
 
 /**
- * 功能描述: https://leetcode.com/problems/regular-expression-matching/
+ * 功能描述: <a href="https://leetcode.com/problems/regular-expression-matching/">...</a>
  *
  * @author youyou
  * @date 4/2/20 8:51 PM
  */
-public class RegularExpressionMatching_test10 {
+public class Test10_RegularExpressionMatching {
     public static void main(String[] args) {
         Solution solution = new Solution();
         System.out.println(solution.isMatch("aa", "a"));

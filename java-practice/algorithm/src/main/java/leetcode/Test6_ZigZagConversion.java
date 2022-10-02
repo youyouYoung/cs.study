@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * 功能描述: https://leetcode.com/problems/zigzag-conversion/
+ * 功能描述: <a href="https://leetcode.com/problems/zigzag-conversion/">...</a>
  *
  * @author youyou
  * @date 3/15/20 8:12 PM
  */
-public class ZigZagConversion_test6 {
+public class Test6_ZigZagConversion {
     public static void main(String[] args) {
         System.out.println(new Solution().convert("PAYPALISHIRING", 3));
         System.out.println("PAHNAPLSIIGYIR".equals(new Solution().convert("PAYPALISHIRING", 3)));

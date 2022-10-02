@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * 功能描述: https://leetcode.com/problems/reverse-integer/
+ * 功能描述: <a href="https://leetcode.com/problems/reverse-integer/">...</a>
  *
  * @author youyou
  * @date 3/15/20 10:38 PM
  */
-public class ReverseInteger_test7 {
+public class Test7_ReverseInteger {
     public static void main(String[] args) {
         Solution s = new Solution();
         System.out.println(s.reverse(1534236469));

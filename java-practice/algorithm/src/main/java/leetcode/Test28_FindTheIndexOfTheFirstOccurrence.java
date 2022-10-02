@@ -1,12 +1,12 @@
 package leetcode;
 
 /**
- * Description: https://leetcode.com/problems/implement-strstr/
+ * Description: <a href="https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/">...</a>
  *
  * @author youyou
  * @date 3/19/21 11:03 AM
  */
-public class ImplementIndexOf {
+public class Test28_FindTheIndexOfTheFirstOccurrence {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

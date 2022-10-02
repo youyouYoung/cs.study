@@ -3,12 +3,12 @@ package leetcode;
 import java.util.*;
 
 /**
- * Description: https://leetcode.com/problems/3sum/
+ * Description: <a href="https://leetcode.com/problems/3sum/">...</a>
  *
  * @author youyou
  * @date 3/5/21 1:05 PM
  */
-public class L3Sum {
+public class Test15_L3Sum {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -56,7 +56,7 @@ public class L3Sum {
                         appendList(y, result, restNum, filterList);
                         restNumMap.remove(y);
                     } else {
-                        int z = 0 - x - y;
+                        int z = -x - y;
                         List<Integer> list = new ArrayList<Integer>() {{
                             add(x);
                             add(y);

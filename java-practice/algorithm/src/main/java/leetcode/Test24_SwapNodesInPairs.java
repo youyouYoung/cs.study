@@ -1,25 +1,25 @@
 package leetcode;
 
-import leetcode.RemoveNthNodeFromEndOfList.ListNode;
+import leetcode.Test19_RemoveNthNodeFromEndOfList.ListNode;
 /**
- * Description: https://leetcode.com/problems/swap-nodes-in-pairs/
+ * Description: <a href="https://leetcode.com/problems/swap-nodes-in-pairs/">...</a>
  *
  * @author youyou
  * @date 3/18/21 1:37 PM
  */
-public class SwapNodesInPairs {
+public class Test24_SwapNodesInPairs {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        RemoveNthNodeFromEndOfList.outputListNode(solution.swapPairs(
+        Test19_RemoveNthNodeFromEndOfList.outputListNode(solution.swapPairs(
                 new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))))
         ));
 
-        RemoveNthNodeFromEndOfList.outputListNode(solution.swapPairs(
+        Test19_RemoveNthNodeFromEndOfList.outputListNode(solution.swapPairs(
                 null
         ));
 
-        RemoveNthNodeFromEndOfList.outputListNode(solution.swapPairs(
+        Test19_RemoveNthNodeFromEndOfList.outputListNode(solution.swapPairs(
                 new ListNode(1)
         ));
     }

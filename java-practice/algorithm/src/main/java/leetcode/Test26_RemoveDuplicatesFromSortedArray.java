@@ -3,12 +3,12 @@ package leetcode;
 import java.util.Arrays;
 
 /**
- * Description: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+ * Description: <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">...</a>
  *
  * @author youyou
  * @date 3/18/21 7:39 PM
  */
-public class RemoveDuplicatesFromSortedArray {
+public class Test26_RemoveDuplicatesFromSortedArray {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

@@ -9,7 +9,7 @@ import java.util.Map;
  * @author youyou
  * @date 2/15/22 2:18 PM
  */
-public class LongestSubstring_test3 {
+public class Test3_LongestSubstring {
     public static void main(String[] args) {
         Solution solution = new Solution();
         solution.lengthOfLongestSubstring("abcabcbb");

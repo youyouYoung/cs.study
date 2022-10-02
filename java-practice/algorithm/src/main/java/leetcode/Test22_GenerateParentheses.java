@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Description: https://leetcode.com/problems/generate-parentheses/
+ * Description: <a href="https://leetcode.com/problems/generate-parentheses/">...</a>
  *
  * @author youyou
  * @date 3/18/21 4:02 PM
  */
-public class GenerateParentheses {
+public class Test22_GenerateParentheses {
 
     public static void main(String[] args) {
         Solution solution = new Solution();

@@ -3,12 +3,12 @@ package leetcode;
 import java.util.Arrays;
 
 /**
- * Description: https://leetcode.com/problems/next-permutation/
+ * Description: <a href="https://leetcode.com/problems/next-permutation/">...</a>
  * date 20/04/2022 14:18
  *
  * @author yangguang
  */
-public class NextPermutation_test31 {
+public class Test31_NextPermutation {
     public static void main(String[] args) {
         int[] nums = new int[]{3, 2, 1};
         Solution solution = new Solution();
