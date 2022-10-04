@@ -60,7 +60,7 @@ public class Test36_ValidSudoku {
          *   3.3 the third loop for every colum in a line.
          * */
         public boolean isValidSudoku(char[][] board) {
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < board.length; i++) {
                 Set<Character> row = new HashSet<>();
                 Set<Character> column = new HashSet<>();
                 for (int index = 0; index < board.length; index++) {
