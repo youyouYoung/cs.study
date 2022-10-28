@@ -41,11 +41,13 @@ public class Test39_CombinationSum {
          *
          * */
         public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            return way2(candidates, target);
+        }
+
+        private List<List<Integer>> way1(int[] candidates, int target) {
             Set<List<Integer>> result = new HashSet<>();
-            Set<Integer> noAnswerSet = new HashSet<>();
-            List<Integer> solution = new ArrayList<>();
             Arrays.sort(candidates);
-            combinationSum(candidates, target, result, solution, noAnswerSet);
+            combinationSum(candidates, target, result, new ArrayList<>(), new HashSet<>());
             return new ArrayList<>(result);
         }
 
@@ -69,6 +71,27 @@ public class Test39_CombinationSum {
                 combinationSum(candidates, target, result, solution, noAnswerSet);
                 solution.remove(solution.size() - 1);
             }
+        }
+
+        private List<List<Integer>> way2(int[] candidates, int target) {
+            List<List<Integer>> result = new ArrayList<>();
+            combinationSum(candidates, target, result, new ArrayList<>(), 0);
+            return result;
+        }
+
+        private void combinationSum(int[] candidates, int target, List<List<Integer>> result, List<Integer> solution, int position) {
+            if (target == 0) {
+                result.add(new ArrayList<>(solution));
+                return;
+            }
+
+            if (target < 0 || position >= candidates.length) return;
+
+            solution.add(candidates[position]);
+            combinationSum(candidates, target - candidates[position], result, solution, position);
+            solution.remove(solution.size() -  1);
+
+            combinationSum(candidates, target, result, solution, position + 1);
         }
     }
 }
