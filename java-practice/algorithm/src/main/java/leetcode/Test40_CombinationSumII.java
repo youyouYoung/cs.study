@@ -52,9 +52,8 @@ public class Test40_CombinationSumII {
          * 2, 1  (at the end, pop 1)
          */
         private void backtracking(int[] candidates, int target, List<List<Integer>> result, LinkedList<Integer> comb, int cursor) {
-            if (target <= 0) {
-                if (target == 0)
-                    result.add(new ArrayList<>(comb));
+            if (target == 0) {
+                result.add(new ArrayList<>(comb));
                 return;
             }
 
@@ -62,8 +61,12 @@ public class Test40_CombinationSumII {
                 if (current > cursor && candidates[current] == candidates[current - 1])
                     continue;
 
+                int remain = target - candidates[current];
+                if (remain < 0)
+                    break;
+
                 comb.add(candidates[current]);
-                backtracking(candidates, target - candidates[current], result, comb, current + 1);
+                backtracking(candidates, remain, result, comb, current + 1);
                 comb.removeLast();
             }
         }
