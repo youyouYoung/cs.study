@@ -3,7 +3,8 @@ package leetcode;
 import java.util.*;
 
 /**
- * Description: <a href="https://leetcode.com/problems/combination-sum-ii/">leetcode problem 40</a> todo it's hard for me locate recursive problem
+ * Description: <a href="https://leetcode.com/problems/combination-sum-ii/">leetcode problem 40</a>
+ * todo it's hard for me locate recursive problem
  *
  * @author youyou
  * @date 10/28/22 9:34 AM
@@ -11,27 +12,27 @@ import java.util.*;
 public class Test40_CombinationSumII {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] candidates = new int[]{10, 1, 2, 7, 6, 1, 5};
+        int[] candidates = new int[] {10, 1, 2, 7, 6, 1, 5};
         int target = 8;
         System.out.println(solution.combinationSum2(candidates, target));
 
-        candidates = new int[]{2, 5, 2, 1, 2};
+        candidates = new int[] {2, 5, 2, 1, 2};
         target = 5;
         System.out.println(solution.combinationSum2(candidates, target));
 
-        candidates = new int[]{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+        candidates = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
         target = 30;
         System.out.println(solution.combinationSum2(candidates, target));
     }
 
     private static class Solution {
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-            return way1(candidates, target);
+            return way2(candidates, target);
         }
 
         /**
          * backtrack - avoiding duplicated combinations by sorting the candidates
-         * */
+         */
         private List<List<Integer>> way1(int[] candidates, int target) {
             List<List<Integer>> result = new ArrayList<>();
             Arrays.sort(candidates);
@@ -58,12 +59,10 @@ public class Test40_CombinationSumII {
             }
 
             for (int current = cursor; current < candidates.length; current++) {
-                if (current > cursor && candidates[current] == candidates[current - 1])
-                    continue;
+                if (current > cursor && candidates[current] == candidates[current - 1]) continue;
 
                 int remain = target - candidates[current];
-                if (remain < 0)
-                    break;
+                if (remain < 0) break;
 
                 comb.add(candidates[current]);
                 backtracking(candidates, remain, result, comb, current + 1);
@@ -73,7 +72,7 @@ public class Test40_CombinationSumII {
 
         /**
          * backtrack - avoiding duplicated combinations by counter table.
-         * */
+         */
         private List<List<Integer>> way2(int[] candidates, int target) {
             List<List<Integer>> results = new ArrayList<>();
             Map<Integer, int[]> counterTable = new TreeMap<>();
@@ -93,12 +92,10 @@ public class Test40_CombinationSumII {
          * 1. creat a variable to store the results.
          * 2. convert the candidates to counter table.
          * 3. invoke backtracking algorithm.
-         * */
-        private void backtracking(List<Integer> comb, int target, int cursor, List<int[]> counterTable, List<List<Integer>> results) {
-            if (target <= 0) {
-                if (target == 0) {
-                    results.add(new ArrayList<>(comb));
-                }
+         */
+        private void backtracking(LinkedList<Integer> comb, int target, int cursor, List<int[]> counterTable, List<List<Integer>> results) {
+            if (target == 0) {
+                results.add(new ArrayList<>(comb));
                 return;
             }
 
@@ -106,11 +103,14 @@ public class Test40_CombinationSumII {
                 int[] candidate = counterTable.get(current);
                 if (candidate[1] <= 0) continue;
 
+                int remain = target - candidate[0];
+                if (remain < 0) break;
+
                 candidate[1] -= 1;
                 comb.add(candidate[0]);
-                backtracking(comb, target - candidate[0], current, counterTable, results);
+                backtracking(comb, remain, current, counterTable, results);
 
-                comb.remove(comb.size() - 1);
+                comb.removeLast();
                 candidate[1] += 1;
             }
         }
